@@ -1,0 +1,45 @@
+{% extends './base.html' %}
+
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<div class=" block  py-5 my-5 text-center">
+    <div class="container">
+        <i class="fa-solid fa-rocket fs-64"></i>
+        <h1 class="display-5 fw-bold text-body-emphasis">Добро пожаловать в Rocket Pizza</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">Мы доставляем не просто пиццу, а настоящий космический опыт! Каждая пицца, как звездный корабль, приготовлена с любовью и качественными ингредиентами. Мы стремимся к совершенству, чтобы вы могли наслаждаться невероятным вкусом прямо у себя дома, в офисе или в нашей уютной пиццерии.
+            Наши пиццы — это гармония классических рецептов и инновационных решений. Мы используем только свежие продукты, а для теста выбираем лучший итальянский рецепт. С Rocket Pizza ваш обед или ужин станет настоящим космическим путешествием!</p>
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="# block" class="btn btn-dark btn-lg px-4 gap-3">меню </a>
+            <a href="#" class="btn btn-outline-secondary btn-lg px-4">Категории</a>
+          </div>
+    </div>
+ </div>
+                 <!-- скорее всего у тебя не установлена jango -->
+  </div>
+  <div class="block" id="clock">
+    <div class="container">
+        <h1 class="biplay-5 fw-bold text-center"> Все товары</h1>
+        <div class="row ">
+            {% for product  in all_products %}
+            <div class="col-md-3 mb-5">
+                <div style="border: 1px solid burlywood">
+                    <div class="card">
+                        <img src="{{ product.image.url }}" class="card-img-top cover-img" alt="{{ product.name }}">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ product.name}}</h5>
+                          <p class="card-text">{{ product.descri}}</p>
+                          <a href="{% url 'product_detail' product_id=product.pk product_slug=product.slug %}" class="btn btn-primary">{{ product.price}} &#8376</a>
+                        </div>
+                      </div>
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+</div>
+
+</div>
+{% endblock %}
